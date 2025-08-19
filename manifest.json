@@ -1,0 +1,8 @@
+{
+  "name": "ZIP Capture – More of What Matters",
+  "short_name": "ZIP Capture",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "icons": []
+}

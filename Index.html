@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZIP Capture – More of What Matters</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    html, body { margin:0; font-family: system-ui, Arial, sans-serif; }
+    .wrap { min-height:100dvh; display:grid; place-items:center; padding:24px; }
+    .card { width:min(420px, 94vw); border:1px solid #ddd; border-radius:16px; padding:20px; box-shadow:0 6px 24px rgba(0,0,0,.06);}
+    h1 { font-size:22px; margin:0 0 8px;}
+    .tagline { opacity:.8; margin:0 0 16px; }
+    .display { font-size:40px; letter-spacing:.12em; text-align:center; border:1px solid #ccc; border-radius:12px; padding:14px 10px; margin:10px 0 16px; user-select:none; }
+    .keypad { display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
+    button { font-size:24px; padding:16px; border-radius:12px; border:1px solid #ccc; background:#fff; cursor:pointer; }
+    button:active { transform:scale(.98); }
+    .row { display:flex; gap:12px; margin-top:14px; }
+    .row > button { flex:1; }
+    .muted { font-size:12px; opacity:.7; margin-top:10px; text-align:center; }
+    .footer { margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+    .footer button { font-size:16px; padding:10px 12px; }
+    .ok { border-color:#0a0; }
+    .warn { border-color:#c00; }
+    .status { height:18px; font-size:13px; text-align:center; margin-top:8px; min-height:18px;}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>What’s your ZIP?</h1>
+    <p class="tagline">Mecklenburg County, VA — More of What Matters</p>
+    <div id="display" class="display" aria-live="polite">_____</div>
+
+    <div class="keypad" aria-label="ZIP keypad">
+      <button data-key="1">1</button>
+      <button data-key="2">2</button>
+      <button data-key="3">3</button>
+      <button data-key="4">4</button>
+      <button data-key="5">5</button>
+      <button data-key="6">6</button>
+      <button data-key="7">7</button>
+      <button data-key="8">8</button>
+      <button data-key="9">9</button>
+      <button data-key="bksp">⌫</button>
+      <button data-key="0">0</button>
+      <button data-key="clr">C</button>
+    </div>
+
+    <div class="row">
+      <button id="submit" class="ok" disabled>Submit</button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <div class="footer">
+      <button id="export">Export CSV</button>
+      <button id="countBtn">Count</button>
+      <button id="wipe" class="warn">Wipe (admin)</button>
+    </div>
+    <p class="muted">Offline-ready. Entries save on this device and can be exported later.</p>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
