@@ -2,10 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>ZIP Capture – More of What Matters</title>
   <link rel="manifest" href="manifest.json">
   <style>
+      /* 👇 Add these at the top of your existing <style> */
+  html, body {
+    touch-action: manipulation;       /* Stops double-tap zoom */
+    -webkit-text-size-adjust: 100%;   /* Stops Safari auto-resize zoom */
+  }
+
+  button, .keypad, .card {
+    touch-action: manipulation;       
+    -webkit-tap-highlight-color: transparent;
+  }
     html, body { margin:0; font-family: system-ui, Arial, sans-serif; }
     .wrap { min-height:100dvh; display:grid; place-items:center; padding:24px; }
     .card { width:min(420px, 94vw); border:1px solid #ddd; border-radius:16px; padding:20px; box-shadow:0 6px 24px rgba(0,0,0,.06);}
