@@ -8,35 +8,85 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>ZIP Capture – More of What Matters</title>
   <link rel="manifest" href="manifest.json">
-  <style>
-      /* 👇 Add these at the top of your existing <style> */
+<style>
+  /* --- Anti-zoom fixes --- */
   html, body {
-    touch-action: manipulation;       /* Stops double-tap zoom */
-    -webkit-text-size-adjust: 100%;   /* Stops Safari auto-resize zoom */
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    touch-action: manipulation;        /* stops double-tap zoom */
+    -webkit-text-size-adjust: 100%;    /* prevents Safari text zoom */
+    height: 100%;
   }
 
   button, .keypad, .card {
-    touch-action: manipulation;       
+    touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
-    html, body { margin:0; font-family: system-ui, Arial, sans-serif; }
-    .wrap { min-height:100dvh; display:grid; place-items:center; padding:24px; }
-    .card { width:min(420px, 94vw); border:1px solid #ddd; border-radius:16px; padding:20px; box-shadow:0 6px 24px rgba(0,0,0,.06);}
-    h1 { font-size:22px; margin:0 0 8px;}
-    .tagline { opacity:.8; margin:0 0 16px; }
-    .display { font-size:40px; letter-spacing:.12em; text-align:center; border:1px solid #ccc; border-radius:12px; padding:14px 10px; margin:10px 0 16px; user-select:none; }
-    .keypad { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
-    button { font-size:32px; padding:22px; border-radius:14px; border:1px solid #ccc; background:#fff; cursor:pointer; }
-    button:active { transform:scale(.98); }
-    .row { display:flex; gap:12px; margin-top:14px; }
-    .row > button { flex:1; }
-    .muted { font-size:12px; opacity:.7; margin-top:10px; text-align:center; }
-    .footer { margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
-    .footer button { font-size:16px; padding:10px 12px; }
-    .ok { border-color:#0a0; }
-    .warn { border-color:#c00; }
-    .status { height:18px; font-size:13px; text-align:center; margin-top:8px; min-height:18px;}
-  </style>
+
+  /* --- Layout wrapper --- */
+  .wrap {
+    min-height: 100dvh;       /* fills full device viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* center content vertically */
+    align-items: center;      /* center horizontally */
+    padding: 5vw;
+    box-sizing: border-box;
+  }
+
+  .card {
+    width: min(480px, 94vw);  /* max width on iPad, shrinks on phone */
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    padding: 5vw;
+    box-shadow: 0 6px 24px rgba(0,0,0,.06);
+    background: #fff;
+  }
+
+  h1 { font-size: clamp(22px, 4vw, 32px); margin: 0 0 0.5em; }
+  .tagline { opacity: .8; margin: 0 0 1em; font-size: clamp(14px, 3vw, 18px); }
+
+  .display {
+    font-size: clamp(32px, 6vw, 56px);
+    letter-spacing: .12em;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: clamp(12px, 2vw, 20px);
+    margin: 10px 0 16px;
+    user-select: none;
+  }
+
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3vw; /* scales with screen width */
+    margin-bottom: 1em;
+  }
+
+  button {
+    font-size: clamp(20px, 5vw, 36px);
+    padding: clamp(14px, 3vw, 28px);
+    border-radius: 1em;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  button:active { transform: scale(.96); }
+
+  .row { display: flex; gap: 12px; margin-top: 1em; }
+  .row > button { flex: 1; }
+
+  .muted { font-size: 12px; opacity: .7; margin-top: 10px; text-align: center; }
+
+  .footer { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .footer button { font-size: 16px; padding: 10px 12px; }
+
+  .ok { border-color:#0a0; }
+  .warn { border-color:#c00; }
+  .status { height:18px; font-size:13px; text-align:center; margin-top:8px; min-height:18px;}
+</style>
 </head>
 <body>
 <div class="wrap">
