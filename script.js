@@ -131,3 +131,12 @@ document.getElementById('wipe').addEventListener('click', async () => {
 
 // Init
 openDB().then(render);
+// Prevent double-tap zoom on buttons
+let lastTouch = 0;
+document.addEventListener('touchend', function (e) {
+  const now = (new Date()).getTime();
+  if (now - lastTouch <= 300) {
+    e.preventDefault();
+  }
+  lastTouch = now;
+}, false);
