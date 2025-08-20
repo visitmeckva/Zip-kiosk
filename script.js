@@ -140,3 +140,23 @@ document.addEventListener('touchend', function (e) {
   }
   lastTouch = now;
 }, false);
+// --- Stop double-tap zoom entirely
+let lastTouchTime = 0;
+document.addEventListener('touchend', function (e) {
+  const now = Date.now();
+  if (now - lastTouchTime <= 300) {
+    e.preventDefault();            // cancel second tap default (zoom)
+  }
+  lastTouchTime = now;
+}, { passive: false });
+
+// --- Stop “dblclick” fallback just in case
+document.addEventListener('dblclick', function (e) {
+  e.preventDefault();
+}, { passive: false });
+
+// --- Block pinch-zoom gestures
+['gesturestart','gesturechange','gestureend'].forEach(evt =>
+  document.addEventListener(evt, e => e.preventDefault(), { passive: false })
+);
+
